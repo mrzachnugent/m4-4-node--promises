@@ -1,18 +1,23 @@
 // Exercise 3.3 - `getAddressPosition`
 // ---------------------------------
 
-const opencage = require('opencage-api-client');
-require('dotenv').config();
+const opencage = require("opencage-api-client");
+require("dotenv").config();
 
 function getAddressFromPosition(lat, lng) {
   const requestObj = {
-    key: '<MY_API_KEY>',
-    q: '<QUERY_STRING>',
+    key: "cd2dbcbb6cb94f37a5723ba08247f514",
+    q: `${lat}, ${lng}`,
   };
 
-  // return ...
+  return opencage.geocode(requestObj);
 }
 
-getAddressFromPosition('48.8584', '2.2945').then((response) =>
-  console.log(response)
+getAddressFromPosition("6", "-75").then((response) =>
+  console.log(response.results[0].formatted)
 );
+// getAddressFromPosition("48.8584", "2.2945").then((response) =>
+//   console.log(response.results[0].formatted)
+// );
+
+module.exports = { getAddressFromPosition };
